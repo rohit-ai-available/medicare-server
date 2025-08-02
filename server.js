@@ -27,9 +27,9 @@ mongoose.connect(mongodbUrlAtlas).then(()=>{
 }).catch((err)=>{
     console.log(err.message);
 })
- app.use("/",(req,resp)=>{
-     resp.send("welcome back rohit")
- })
+ // app.use("/",(req,resp)=>{
+ //     resp.send("welcome back rohit")
+ // })
 app.use(express.urlencoded(true));
 app.use("/user",userRoute);
 // gemini key
