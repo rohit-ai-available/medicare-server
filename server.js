@@ -27,9 +27,9 @@ mongoose.connect(mongodbUrlAtlas).then(()=>{
 }).catch((err)=>{
     console.log(err.message);
 })
-// app.use("/",(req,resp)=>{
-//     resp.send("welcome back rohit")
-// })
+ app.use("/",(req,resp)=>{
+     resp.send("welcome back rohit")
+ })
 app.use(express.urlencoded(true));
 app.use("/user",userRoute);
 // gemini key
@@ -69,7 +69,7 @@ app.post('/generate',async(req,resp)=>{
     const resultText = geminiresp.data.candidates?.[0]?.content?.parts?.[0]?.text;
     resp.json({ response: resultText });
 
-  } catch (err) {
+  } catch (err) { 
     console.error(err.response?.data || err.message);
     resp.status(500).json({ msg: err.response?.data || err.message });
   }
