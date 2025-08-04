@@ -32,7 +32,7 @@ mongoose.connect(mongodbUrlAtlas).then(()=>{
 app.use(express.urlencoded(true));
 app.use("/user",userRoute);
 app.use("/",(req,resp)=>{
-    resp.send("welcome back rohit side+++++++++")
+    resp.send("=============> welcome back rohit <=================")
  })
 // gemini key
 //const apiKey="AIzaSyB7qgsMaGSXsqDHCPjTnVzZ1YZwzDDTfXk";
