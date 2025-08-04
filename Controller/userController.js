@@ -157,7 +157,7 @@ function dologin(req,resp){
       console.log(req.body)
            var UserCol=new AvailMediColRef(req.body);
                  UserCol.save().then((docu)=>{
-                  // let jsontoken=jwt.sign({email:req.body.email},process.env.SEC_KEY,{expiresIn:"1m"})
+                  let jsontoken=jwt.sign({email:req.body.email},process.env.SEC_KEY,{expiresIn:"1m"})
                    resp.json({status:true,msg:"Record saved",obj:docu,token:jsontoken});
                  }).catch((err)=>{
                    resp.json({status:false,msg:err.message})
