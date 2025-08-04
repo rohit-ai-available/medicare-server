@@ -20,7 +20,7 @@ app.use(fileuploader());
 app.use(cors());
 /// generative ai key
 app.listen("2005",()=>{
-    console.log("server started===>")
+    console.log("server started*******")
 })
 let mongodbUrlAtlas=process.env.atlaurl;
 mongoose.connect(mongodbUrlAtlas).then(()=>{
