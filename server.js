@@ -14,12 +14,13 @@ var cloudinary=require("cloudinary").v2;
     api_key:process.env.api_key,
     api_secret:process.env.api_secret,
 })
+
 var app=express()
 app.use(fileuploader());
 app.use(cors());
 /// generative ai key
 app.listen("2005",()=>{
-    console.log("server started******")
+    console.log("server started===>")
 })
 let mongodbUrlAtlas=process.env.atlaurl;
 mongoose.connect(mongodbUrlAtlas).then(()=>{
@@ -27,11 +28,12 @@ mongoose.connect(mongodbUrlAtlas).then(()=>{
 }).catch((err)=>{
     console.log(err.message);
 })
- // app.use("/",(req,resp)=>{
- //     resp.send("welcome back rohit")
- // })
+
 app.use(express.urlencoded(true));
 app.use("/user",userRoute);
+app.use("/",(req,resp)=>{
+    resp.send("welcome back rohit side")
+ })
 // gemini key
 //const apiKey="AIzaSyB7qgsMaGSXsqDHCPjTnVzZ1YZwzDDTfXk";
 //const endpoint=  `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
@@ -69,7 +71,7 @@ app.post('/generate',async(req,resp)=>{
     const resultText = geminiresp.data.candidates?.[0]?.content?.parts?.[0]?.text;
     resp.json({ response: resultText });
 
-  } catch (err) { 
+  } catch (err) {
     console.error(err.response?.data || err.message);
     resp.status(500).json({ msg: err.response?.data || err.message });
   }
